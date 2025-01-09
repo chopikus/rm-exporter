@@ -42,4 +42,4 @@ jobs:
           build-platform: ${{ matrix.build.platform }}
           package: false
           go-version: '1.22'
-          node-version: '17.x'
+          node-version: '20.x'
