@@ -17,13 +17,13 @@ jobs:
       fail-fast: false
       matrix:
         build:
-          - name: 'App'
+          - name: 'rm-exporter'
             platform:  'linux/amd64'
             os: 'ubuntu-latest'
-          - name: 'App'
+          - name: 'rm-exporter'
             platform:  'windows/amd64'
             os: 'windows-latest'
-          - name: 'App'
+          - name: 'rm-exporter'
             platform:  'darwin/universal'
             os: 'macos-latest'
 
@@ -43,5 +43,5 @@ jobs:
           package: true
           go-version: '1.22'
           node-version: '20.x'
-          macos-build-name: "App"
+          macos-build-name: 'rm-exporter'
           ubuntu24: "-tags webkit2_41"
