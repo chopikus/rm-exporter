@@ -17,13 +17,13 @@ jobs:
       fail-fast: false
       matrix:
         build:
-          - name: 'App (Linux/amd64)'
+          - name: 'App'
             platform:  'linux/amd64'
             os: 'ubuntu-22.04'
-          - name: 'App (Windows/amd64)'
+          - name: 'App'
             platform:  'windows/amd64'
             os: 'windows-2022'
-          - name: 'App (Darwin/universal)'
+          - name: 'App'
             platform:  'darwin/universal'
             os: 'macos-13'
 
