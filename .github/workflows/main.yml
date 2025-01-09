@@ -22,10 +22,10 @@ jobs:
             os: 'ubuntu-22.04'
           - name: 'App'
             platform:  'windows/amd64'
-            os: 'windows-latest'
+            os: 'windows-2022'
           - name: 'App'
             platform:  'darwin/universal'
-            os: 'macos-latest'
+            os: 'macos-13'
 
     runs-on: ${{ matrix.build.os }}
     steps:
