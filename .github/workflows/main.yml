@@ -19,13 +19,13 @@ jobs:
         build:
           - name: 'App'
             platform:  'linux/amd64'
-            os: 'ubuntu-22.04'
+            os: 'ubuntu-latest'
           - name: 'App'
             platform:  'windows/amd64'
-            os: 'windows-2022'
+            os: 'windows-latest'
           - name: 'App'
             platform:  'darwin/universal'
-            os: 'macos-13'
+            os: 'macos-latest'
 
     runs-on: ${{ matrix.build.os }}
     steps:
@@ -35,11 +35,13 @@ jobs:
           submodules: recursive
 
       - name: Build wails
-        uses: chopikus/wails-build-action@697d724fda611242084beeaa9c5ff95827812ffa
+        uses: chopikus/wails-build-action@a9e607df4c313c9a7aaa7b29c61148e77c54ab92
         id: build
         with:
           build-name: ${{ matrix.build.name }}
           build-platform: ${{ matrix.build.platform }}
-          package: false
+          package: true
           go-version: '1.22'
           node-version: '20.x'
+          macos-build-name: "App"
+          ubuntu24: "-tags webkit2_41"
