@@ -35,10 +35,11 @@ jobs:
           submodules: recursive
 
       - name: Build wails
-        uses: LukeG1/wails-build-action@e9a03c38f245532df0e4b8d1380dcfada8a82ac1
+        uses: chopikus/wails-build-action@697d724fda611242084beeaa9c5ff95827812ffa
         id: build
         with:
           build-name: ${{ matrix.build.name }}
           build-platform: ${{ matrix.build.platform }}
           package: false
           go-version: '1.22'
+          node-version: '17.x'
