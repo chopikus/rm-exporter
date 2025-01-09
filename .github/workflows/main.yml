@@ -19,7 +19,7 @@ jobs:
         build:
           - name: 'App'
             platform:  'linux/amd64'
-            os: 'ubuntu-latest'
+            os: 'ubuntu-22.04'
           - name: 'App'
             platform:  'windows/amd64'
             os: 'windows-latest'
@@ -41,4 +41,4 @@ jobs:
           build-name: ${{ matrix.build.name }}
           build-platform: ${{ matrix.build.platform }}
           package: false
-          go-version: '1.20'
+          go-version: '1.22'
