@@ -80,11 +80,6 @@ func (a *App) GetCheckedFilesCount() int {
 	return a.selection.GetCheckedFilesCount()
 }
 
-type RmExportOptions struct {
-	Format   string
-	Location string
-}
-
 func (a *App) SetExportOptions(options backend.RmExportOptions) {
 	a.export_options = options
 }
