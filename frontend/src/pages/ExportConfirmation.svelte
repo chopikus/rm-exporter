@@ -80,7 +80,7 @@
         </div>
         <div class="flex flex-row justify-items-start items-center mt-3">
             <h2 class="w-20 text-md">Location:</h2>
-            <Button pill onclick={selectDirectory}>Choose directory</Button>
+            <Button pill onclick={selectDirectory}>Choose a folder</Button>
             <h2 class="text-md ml-2">{location || "No folder selected."}</h2>
         </div>
         {#if items.length > 0}
