@@ -25,6 +25,8 @@
     let rmdoc = $state(true);
     let location = $state("");
     let items: DocInfo[] = $state([]);
+    let preserveDirStruct = $state<boolean>(true);
+    let createFolder = $state<boolean>(true);
 
     GetCheckedFiles().then((result: DocInfo[]) => {
         items = result;
@@ -83,6 +85,55 @@
             <Button pill onclick={selectDirectory}>Choose a folder</Button>
             <h2 class="text-md ml-2">{location || "No folder selected."}</h2>
         </div>
+
+        <div class="flex flex-col gap-5 mt-4">
+            <!-- First vertical group -->
+            <div class="flex flex-col gap-2">
+                <label class="flex items-center gap-2 cursor-pointer">
+                    <input
+                        type="radio"
+                        bind:group={preserveDirStruct}
+                        value={true}
+                        class="text-blue-600 focus:ring-blue-500"
+                    />
+                    <span>Preserve folder structure</span>
+                </label>
+
+                <label class="flex items-center gap-2 cursor-pointer">
+                    <input
+                        type="radio"
+                        bind:group={preserveDirStruct}
+                        value={false}
+                        class="text-blue-600 focus:ring-blue-500"
+                    />
+                    <span>Download everything into one folder</span>
+                </label>
+            </div>
+
+            <!-- Second vertical group -->
+            <div class="flex flex-col gap-2">
+                <label class="flex items-center gap-2 cursor-pointer">
+                    <input
+                        type="radio"
+                        bind:group={createFolder}
+                        value={true}
+                        class="text-blue-600 focus:ring-blue-500"
+                    />
+                    <span>Create a new folder</span>
+                </label>
+
+                <label class="flex items-center gap-2 cursor-pointer">
+                    <input
+                        type="radio"
+                        bind:group={createFolder}
+                        value={false}
+                        class="text-blue-600 focus:ring-blue-500"
+                    />
+                    <span>Download into the selected folder</span>
+                </label>
+            </div>
+        </div>
+
         {#if items.length > 0}
             <h1 class="mb-2 mt-4 text-lg font-bold">
                 Following items will be exported:
