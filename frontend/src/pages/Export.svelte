@@ -53,6 +53,14 @@
         return result;
     });
 
+    let dirStructs: string = $derived.by(() => {
+        if (exportOptions.PreserveDirStruct) {
+            return "Preserving directory structure.";
+        } else {
+            return "Downloading everything into the same folder.";
+        }
+    });
+
     InitExport().then(() => {
         Export();
     });
@@ -108,7 +116,8 @@
 
     <main class="pr-7 pl-7 mt-3 w-full">
         <h2 class="text-md">Formats: {formats}</h2>
-        <h2 class="text-md mb-3">Location: {exportOptions["Location"]}</h2>
+        <h2 class="text-md">Location: {exportOptions["Location"]}</h2>
+        <h2 class="text-md mb-3">{dirStructs}</h2>
 
         {#if exportItems.length > 0}
             <Listgroup items={exportItems} let:item active={false}>

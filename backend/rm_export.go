@@ -15,9 +15,10 @@ import (
 )
 
 type RmExportOptions struct {
-	Pdf      bool
-	Rmdoc    bool
-	Location string // path to the folder to export
+	Pdf               bool
+	Rmdoc             bool
+	Location          string // path to the folder to export
+	PreserveDirStruct bool
 }
 
 type RmExport struct {
@@ -179,7 +180,15 @@ func (r *RmExport) download(item DocInfo, format string) error {
 }
 
 func (r *RmExport) createFile(folderName string, item DocInfo, format string) (*os.File, error) {
-	path, err := r.paths.getFilePathUnique(r.Options.Location, folderName, item.TabletPath, format)
+	itemPath := item.TabletPath
+	if !r.Options.PreserveDirStruct {
+		/* If the directory structure is preserved,
+		 * create a slice only with the last element.
+		 * This flattens the directory structure. */
+		itemPath = itemPath[len(itemPath)-1:]
+	}
+
+	path, err := r.paths.getFilePathUnique(r.Options.Location, folderName, itemPath, format)
 	if err != nil {
 		return nil, fmt.Errorf("failed to find a path, id=%v, (%v)", item.Id, err.Error())
 	}

@@ -26,7 +26,6 @@
     let location = $state("");
     let items: DocInfo[] = $state([]);
     let preserveDirStruct = $state<boolean>(true);
-    let createFolder = $state<boolean>(true);
 
     GetCheckedFiles().then((result: DocInfo[]) => {
         items = result;
@@ -39,7 +38,12 @@
     };
 
     const onProceed = () => {
-        SetExportOptions({ pdf, rmdoc, location }).then(() => {
+        SetExportOptions({
+            pdf,
+            rmdoc,
+            location,
+            preserveDirStruct,
+        }).then(() => {
             push("/export");
         });
     };
@@ -106,30 +110,7 @@
                         value={false}
                         class="text-blue-600 focus:ring-blue-500"
                     />
-                    <span>Download everything into one folder</span>
-                </label>
-            </div>
-
-            <!-- Second vertical group -->
-            <div class="flex flex-col gap-2">
-                <label class="flex items-center gap-2 cursor-pointer">
-                    <input
-                        type="radio"
-                        bind:group={createFolder}
-                        value={true}
-                        class="text-blue-600 focus:ring-blue-500"
-                    />
-                    <span>Create a new folder</span>
-                </label>
-
-                <label class="flex items-center gap-2 cursor-pointer">
-                    <input
-                        type="radio"
-                        bind:group={createFolder}
-                        value={false}
-                        class="text-blue-600 focus:ring-blue-500"
-                    />
-                    <span>Download into the selected folder</span>
+                    <span>Download everything into the same folder</span>
                 </label>
             </div>
         </div>
