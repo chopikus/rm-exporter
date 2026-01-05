@@ -138,10 +138,10 @@
             <h1 class="mb-2 mt-4 text-lg font-bold">
                 Following items will be exported:
             </h1>
-            <Listgroup {items} let:item active={false}>
+            <Listgroup {items} let:item active={false} class="mb-5">
                 <div class="flex flex-row justify-start items-center w-full">
                     <FileLinesSolid class="mr-1" size="lg" />
-                    <P size="xl">{item.DisplayPath}</P>
+                    <P size="xl" class="break-all">{item.DisplayPath}</P>
                 </div>
             </Listgroup>
         {/if}
