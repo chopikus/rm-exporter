@@ -19,6 +19,7 @@ type RmExportOptions struct {
 	Rmdoc             bool
 	Location          string // path to the folder to export
 	PreserveDirStruct bool
+	TimeoutSeconds    int
 }
 
 type RmExport struct {
@@ -41,7 +42,7 @@ func InitExport(ctx context.Context, options RmExportOptions, items []DocInfo, t
 				Timeout: 5 * time.Second,
 			}).Dial,
 		},
-		Timeout: 5 * time.Minute,
+		Timeout: time.Duration(options.TimeoutSeconds) * time.Second,
 	}
 
 	t := time.Now().Format(time.DateTime)

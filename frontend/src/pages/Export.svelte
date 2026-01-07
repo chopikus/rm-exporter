@@ -61,6 +61,10 @@
         }
     });
 
+    let timeoutSeconds: number = $derived.by(() => {
+        return exportOptions.TimeoutSeconds;
+    });
+
     InitExport().then(() => {
         Export();
     });
@@ -117,6 +121,9 @@
     <main class="pr-7 pl-7 mt-3 w-full">
         <h2 class="text-md">Formats: {formats}</h2>
         <h2 class="text-md">Location: {exportOptions["Location"]}</h2>
+        <h2 class="text-md">
+            Download timeout per note: {(timeoutSeconds / 60).toFixed(1)} min
+        </h2>
         <h2 class="text-md mb-3">{dirStructs}</h2>
 
         {#if exportItems.length > 0}

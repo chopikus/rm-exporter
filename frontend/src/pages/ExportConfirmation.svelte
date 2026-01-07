@@ -26,6 +26,7 @@
     let location = $state("");
     let items: DocInfo[] = $state([]);
     let preserveDirStruct = $state<boolean>(true);
+    let timeoutSeconds = $state<number>(300);
 
     GetCheckedFiles().then((result: DocInfo[]) => {
         items = result;
@@ -43,6 +44,7 @@
             rmdoc,
             location,
             preserveDirStruct,
+            timeoutSeconds,
         }).then(() => {
             push("/export");
         });
@@ -90,9 +92,10 @@
             <h2 class="text-md ml-2">{location || "No folder selected."}</h2>
         </div>
 
-        <div class="flex flex-col gap-5 mt-4">
+        <div class="flex flex-col gap-2 mt-4">
+            <h2 class="text-md font-medium">Output structure:</h2>
             <!-- First vertical group -->
-            <div class="flex flex-col gap-2">
+            <div class="flex flex-col gap-1">
                 <label class="flex items-center gap-2 cursor-pointer">
                     <input
                         type="radio"
@@ -112,6 +115,25 @@
                     />
                     <span>Download everything into the same folder</span>
                 </label>
+            </div>
+        </div>
+
+        <div class="flex flex-col gap-2 mt-4">
+            <h2 class="text-md font-medium">Timeout per note:</h2>
+
+            <div class="flex items-center gap-4">
+                <input
+                    type="range"
+                    min="30"
+                    max="1800"
+                    step="30"
+                    bind:value={timeoutSeconds}
+                    class="w-full accent-blue-600"
+                />
+
+                <span class="text-sm w-28 text-right">
+                    {(timeoutSeconds / 60).toFixed(1)} min
+                </span>
             </div>
         </div>
 
