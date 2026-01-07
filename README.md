@@ -14,7 +14,7 @@ This tool aims to fix those problems.
 * Supports exporting as many folders & notes as you want;
 * Can download both .pdf and .rmdoc;
 * Retries the download **from the last failed note**;
-* Waits for large notes long enough;
+* Waits for large notes long enough (the timeout can be specified);
 * Doesn't require reMarkable account or internet connection;
 * Works with out of the box reMarkable software;
 * Has a nice GUI.
@@ -27,7 +27,7 @@ The tool is built with [wailsv2](https://github.com/wailsapp/wails). The UI is i
 ### Supported rM software version
 Around 3.10+, around that version the local server requests got updated.
 
-Tested on Version 3.16.2.3 on reMarkable 2.
+Tested on Version 3.22.0.64 on reMarkable 2.
 
 ### Steps before running the `rm-exporter`
 * Enable USB connection in the Storage settings. Without the permission the app can't find the tablet;
